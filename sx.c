@@ -106,7 +106,7 @@ buildblock () {
 
     bzero (block.data, BLOCK_SIZE);
 
-    if (fread (block.data, 1, 128, fp))
+    if (fread (block.data, 1, BLOCK_SIZE, fp) < BLOCK_SIZE)
         is_eot = 1;
 
     block.cksum = cksum (block.data, BLOCK_SIZE);
